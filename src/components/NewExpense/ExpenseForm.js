@@ -1,8 +1,8 @@
 import { useState } from "react";
-import "./ExpenseForm.css";
+import classes from "./ExpenseForm.module.css";
 
 const ExpenseForm = (props) => {
-  // gets an object (with 3 properties) as an initial state
+  // get an object (with 3 properties) as an initial state
   const [userInput, setUserInput] = useState({
     title: "",
     amount: "",
@@ -11,8 +11,8 @@ const ExpenseForm = (props) => {
 
   const titleChangeHandler = (ev) => {
     const title = ev.target.value;
-    setUserInput((prevState) => ({ ...prevState, title: title }));
     // copy the userInput object state then override a specific property (title)
+    setUserInput((prevState) => ({ ...prevState, title: title }));
   };
 
   const amountChangeHandler = (ev) => {
@@ -34,7 +34,8 @@ const ExpenseForm = (props) => {
       date: new Date(userInput.date),
     };
 
-    props.onSaveExpenseData(expenseDate); // from parent element (NewExpense)
+    // from parent element (NewExpense)
+    props.onSaveExpenseData(expenseDate);
     clearUserInput();
   };
 
@@ -52,8 +53,8 @@ const ExpenseForm = (props) => {
 
   return (
     <form onSubmit={(ev) => submitHandler(ev)}>
-      <div className="new-expense__controls">
-        <div className="new-expense__control">
+      <div className={classes["new-expense__controls"]}>
+        <div className={classes["new-expense__control"]}>
           <label>Title</label>
           <input
             type="text"
@@ -61,7 +62,7 @@ const ExpenseForm = (props) => {
             onChange={(ev) => titleChangeHandler(ev)}
           />
         </div>
-        <div className="new-expense__control">
+        <div className={classes["new-expense__control"]}>
           <label>Amount</label>
           <input
             type="number"
@@ -71,7 +72,7 @@ const ExpenseForm = (props) => {
             onChange={(ev) => amountChangeHandler(ev)}
           />
         </div>
-        <div className="new-expense__control">
+        <div className={classes["new-expense__control"]}>
           <label>Date</label>
           <input
             type="date"
@@ -82,7 +83,7 @@ const ExpenseForm = (props) => {
           />
         </div>
       </div>
-      <div className="new-expense__actions">
+      <div className={classes["new-expense__actions"]}>
         <button type="button" onClick={cancelHandler}>
           Cancel
         </button>

@@ -1,7 +1,7 @@
-import "./Card.css";
+import clases from "./Card.module.css";
 
 const Card = (props) => {
-  const classes = "card " + props.className;
+  const classes = `${clases.card}  + ${props.className}`;
   // extracting the classes "expense-item" that we received from outside <Card className="expense-item"> then merge to the default classname "card" of this component
   // className will be "card expense-item"
   return <div className={classes}>{props.children}</div>;

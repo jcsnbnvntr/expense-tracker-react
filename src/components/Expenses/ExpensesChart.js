@@ -17,6 +17,7 @@ const ExpensesChart = (props) => {
     { label: "Dec", value: 0 },
   ];
 
+  // note that props.expenses are already filtered by selected year
   for (const expense of props.expenses) {
     const expenseMonth = expense.date.getMonth(); // starts at 0
     chartDataPoints[expenseMonth].value += expense.amount;
